@@ -1,0 +1,11 @@
+.nav-bar {
+
+    &__link {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover, &:active {
+            color: #fff;
+        }
+    }
+}

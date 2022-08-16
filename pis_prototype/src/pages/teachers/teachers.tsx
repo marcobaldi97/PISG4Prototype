@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Badge, Button, Form, Table } from "react-bootstrap";
 
-import { Subject, Teacher } from "../../types";
+import { Teacher } from "../../types";
 import TeachersTable from "../../components/TeachersTables/TeachersTable";
 import CreateTeacher from "../../components/CreateTeacher/CreateTeacher";
+import Spinner from "../../components/Spinner/Spinner";
+
+import "./Teachers.scss";
 
 function Teachers() {
 	const [teachers, setTeachers] = useState<Teacher[]>([
@@ -20,14 +22,17 @@ function Teachers() {
 			subjects: [{ name: "English" }],
 		},
 	]);
+	const [loading, setLoading] = useState(false);
 
 	return (
-		<section>
+		<section className="teachers">
 			<h2>Teachers</h2>
 
-			<TeachersTable teachers={teachers} />
+			<Spinner isLoading={loading}>
+				<TeachersTable teachers={teachers} />
 
-			<CreateTeacher teachers={teachers} setTeachers={setTeachers} />
+				<CreateTeacher teachers={teachers} setTeachers={setTeachers} />
+			</Spinner>
 		</section>
 	);
 }
