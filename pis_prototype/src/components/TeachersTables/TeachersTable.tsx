@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, Table } from "react-bootstrap";
+import { Badge, Button, Table } from "react-bootstrap";
 
 import { Teacher } from "../../types";
 
@@ -20,6 +20,7 @@ export default function TeachersTable(props: TeachersTableProps) {
 					<th>First Name</th>
 					<th>Last Name</th>
 					<th>Subjects</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,6 +35,11 @@ export default function TeachersTable(props: TeachersTableProps) {
 									{subject.name}
 								</Badge>
 							))}
+						</td>
+						<td>
+							<Button size="sm" variant="danger">
+								Delete
+							</Button>
 						</td>
 					</tr>
 				))}

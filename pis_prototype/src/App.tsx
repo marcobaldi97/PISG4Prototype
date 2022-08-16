@@ -1,7 +1,7 @@
 import React from "react";
-import Teachers from "./pages/teachers/teachers";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import logo from "./logo.svg";
+import Teachers from "./pages/Teachers/Teachers";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -9,9 +9,11 @@ import "./App.css";
 function App() {
 	return (
 		<div className="App">
-			<header className="App-header">
-				<Teachers />
-			</header>
+			<BrowserRouter>
+				<Routes location={"/teachers"}>
+					<Route path="/teachers" element={<Teachers />} />
+				</Routes>
+			</BrowserRouter>
 		</div>
 	);
 }
