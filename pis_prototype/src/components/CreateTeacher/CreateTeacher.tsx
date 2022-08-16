@@ -3,6 +3,8 @@ import { Button, Form } from "react-bootstrap";
 
 import { Subject, Teacher } from "../../types";
 
+import "./CreateTeacher.scss";
+
 interface CreateTeacherProps {
 	teachers: Teacher[];
 	setTeachers: (teachers: Teacher[]) => void;
@@ -38,7 +40,7 @@ export default function CreateTeacher(props: CreateTeacherProps) {
 	};
 
 	return (
-		<Form onSubmit={handleSubmit}>
+		<Form className="create-teacher" onSubmit={handleSubmit}>
 			<Form.Group className="mb-3" controlId="ci">
 				<Form.Label>CI</Form.Label>
 				<Form.Control size="sm" type="text" placeholder="x.xxx.xxx-x" />
@@ -63,7 +65,11 @@ export default function CreateTeacher(props: CreateTeacherProps) {
 				/>
 			</Form.Group>
 
-			<Button variant="success" size="sm" type="submit">
+			<Button
+				className="submit-button"
+				variant="success"
+				size="sm"
+				type="submit">
 				Submit New Teacher
 			</Button>
 		</Form>

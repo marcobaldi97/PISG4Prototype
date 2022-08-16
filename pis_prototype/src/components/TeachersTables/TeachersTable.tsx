@@ -3,6 +3,8 @@ import { Badge, Table } from "react-bootstrap";
 
 import { Teacher } from "../../types";
 
+import "./TeachersTable.scss";
+
 interface TeachersTableProps {
 	teachers: Teacher[];
 }
@@ -28,7 +30,9 @@ export default function TeachersTable(props: TeachersTableProps) {
 						<td>{teacher.lastName}</td>
 						<td>
 							{teacher.subjects.map((subject) => (
-								<Badge bg="success">{subject.name}</Badge>
+								<Badge className="badge" bg="success">
+									{subject.name}
+								</Badge>
 							))}
 						</td>
 					</tr>
