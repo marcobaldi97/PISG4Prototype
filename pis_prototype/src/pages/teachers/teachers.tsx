@@ -13,7 +13,7 @@ function Teachers() {
 			ci: "1231234",
 			firstName: "Mark",
 			lastName: "Von Baldi",
-			subjects: [{ name: "Math" }, { name: "IT" }],
+			subjects: [{ name: "Maths" }, { name: "IT" }],
 		},
 		{
 			ci: "4321321",

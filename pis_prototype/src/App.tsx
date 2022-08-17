@@ -6,7 +6,7 @@ import Teachers from "./pages/Teachers/Teachers";
 import NavBar from "./components/Navbar/Navbar";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import "./App.scss";
 
 function App() {
 	const routes: RouteType[] = [

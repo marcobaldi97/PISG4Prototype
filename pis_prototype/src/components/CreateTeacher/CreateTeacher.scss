@@ -8,5 +8,11 @@
 
     .submit-button {
         justify-self: center;
+        background-color: #fe6e20;
+        border: 0px;
+
+        &:hover{
+            background-color: #353535;
+        }
     }
 }

@@ -23,12 +23,14 @@ export default function TeachersTable(props: TeachersTableProps) {
 					<th></th>
 				</tr>
 			</thead>
+
 			<tbody>
 				{teachers.map((teacher) => (
 					<tr>
 						<td>{teacher.ci}</td>
 						<td>{teacher.firstName}</td>
 						<td>{teacher.lastName}</td>
+						
 						<td>
 							{teacher.subjects.map((subject) => (
 								<Badge className="badge" bg="success">
@@ -36,6 +38,7 @@ export default function TeachersTable(props: TeachersTableProps) {
 								</Badge>
 							))}
 						</td>
+
 						<td>
 							<Button size="sm" variant="danger">
 								Delete

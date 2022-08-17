@@ -3,6 +3,7 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import { Route } from "../../types";
+import Logo from "../../assets/Logo.png";
 
 import "./Navbar.scss";
 
@@ -16,7 +17,10 @@ export default function NavBar(props: NavBarProps) {
 	return (
 		<Navbar className="nav-bar" bg="dark" variant="dark" fixed="top">
 			<Container>
-				<Navbar.Brand>Group Quattre</Navbar.Brand>
+				<Navbar.Brand>
+					<img className="logo" src={Logo} alt={'logo'}/>
+				</Navbar.Brand>
+
 				<Nav className="me-auto">
 					{routes.map((route) => (
 						<Nav.Link>

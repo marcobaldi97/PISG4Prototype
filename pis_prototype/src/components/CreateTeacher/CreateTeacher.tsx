@@ -22,10 +22,9 @@ export default function CreateTeacher(props: CreateTeacherProps) {
 		const firstName: string = target.firstName.value;
 		const lastName: string = target.lastName.value;
 		const subjects: Subject[] = (target.subjects.value as string)
-			.replaceAll(" ", "")
 			.split(",")
 			.map((subject) => ({
-				name: subject,
+				name: subject.trim(),
 			}));
 
 		setTeachers([
@@ -37,6 +36,11 @@ export default function CreateTeacher(props: CreateTeacherProps) {
 				subjects,
 			},
 		]);
+
+		target.ci.value = '';
+		target.firstName.value = '';
+		target.lastName.value = '';
+		target.subjects.value = '';
 	};
 
 	return (
@@ -58,6 +62,7 @@ export default function CreateTeacher(props: CreateTeacherProps) {
 
 			<Form.Group className="mb-3" controlId="subjects">
 				<Form.Label>Subjects</Form.Label>
+
 				<Form.Control
 					size="sm"
 					type="text"
