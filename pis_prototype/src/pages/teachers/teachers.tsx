@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useQuery } from "react-query";
 import axios from "axios";
 
 import { Teacher } from "../../types";
@@ -7,25 +8,9 @@ import CreateTeacher from "../../components/CreateTeacher/CreateTeacher";
 import Spinner from "../../components/Spinner/Spinner";
 
 import "./Teachers.scss";
-import { useQuery } from "react-query";
 
 function Teachers() {
-	const [teachers, setTeachers] = useState<Teacher[]>([
-		{
-			ci: "1231234",
-			firstName: "Mark",
-			lastName: "Von Baldi",
-			subjects: [{ name: "Maths" }, { name: "IT" }],
-		},
-		{
-			ci: "4321321",
-			firstName: "Nacho",
-			lastName: "Carmona",
-			subjects: [{ name: "English" }],
-		},
-	]);
-
-	const { isLoading, error, data } = useQuery(
+	const { isLoading, error, data, refetch } = useQuery(
 		["teachersFetch"],
 		async (): Promise<Teacher[]> => {
 			const response = await axios.get("http://localhost:3000/teachers");
@@ -42,7 +27,7 @@ function Teachers() {
 
 			<TeachersTable teachers={data} />
 
-			<CreateTeacher teachers={teachers} setTeachers={setTeachers} />
+			<CreateTeacher refetchCallback={refetch}/>
 		</section>
 	);
 }

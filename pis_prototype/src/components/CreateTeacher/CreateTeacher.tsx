@@ -1,22 +1,28 @@
+import axios from "axios";
 import React from "react";
 import { Button, Form } from "react-bootstrap";
+import { QueryObserverResult, RefetchOptions, RefetchQueryFilters, useMutation } from "react-query";
 
 import { Subject, Teacher } from "../../types";
+import Spinner from "../Spinner/Spinner";
 
 import "./CreateTeacher.scss";
 
 interface CreateTeacherProps {
-	teachers: Teacher[];
-	setTeachers: (teachers: Teacher[]) => void;
+	refetchCallback: <TPageData>(options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined) => Promise<QueryObserverResult<Teacher[], unknown>>
 }
 
 export default function CreateTeacher(props: CreateTeacherProps) {
-	const { teachers, setTeachers } = props;
+	const { refetchCallback } = props
+
+	const {isLoading, mutate} = useMutation((newTeacher: Teacher) => {
+		return axios.post('http://localhost:3000/teachers', newTeacher)
+	})
 
 	const handleSubmit = (event: any) => {
-		event.preventDefault();
-
 		const { target } = event;
+
+		event.preventDefault();
 
 		const ci: string = target.ci.value;
 		const firstName: string = target.firstName.value;
@@ -27,15 +33,8 @@ export default function CreateTeacher(props: CreateTeacherProps) {
 				name: subject.trim(),
 			}));
 
-		setTeachers([
-			...teachers,
-			{
-				ci,
-				firstName,
-				lastName,
-				subjects,
-			},
-		]);
+		mutate({ci,firstName,lastName,subjects})
+		refetchCallback()
 
 		target.ci.value = '';
 		target.firstName.value = '';
@@ -75,7 +74,9 @@ export default function CreateTeacher(props: CreateTeacherProps) {
 				variant="success"
 				size="sm"
 				type="submit">
-				Submit New Teacher
+					<Spinner isLoading={isLoading}>
+						Submit New Teacher
+					</Spinner>
 			</Button>
 		</Form>
 	);
