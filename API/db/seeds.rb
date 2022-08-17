@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+teacher1 = Teacher.create(ci: "1.685.142-7", firstName: "Marhk", lastName: "Baldi")
+teacher2 = Teacher.create(ci: "1.695.142-7", firstName: "Nick", lastName: "Bluwuw")
