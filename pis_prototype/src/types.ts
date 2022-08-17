@@ -6,7 +6,7 @@ export interface Teacher {
     ci: string;
     firstName: string;
     lastName: string;
-    subjects: Subject[];
+    subjects?: Subject[];
 }
 
 export type Route = {

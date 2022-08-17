@@ -30,9 +30,9 @@ export default function TeachersTable(props: TeachersTableProps) {
 						<td>{teacher.ci}</td>
 						<td>{teacher.firstName}</td>
 						<td>{teacher.lastName}</td>
-						
+
 						<td>
-							{teacher.subjects.map((subject) => (
+							{teacher.subjects?.map((subject) => (
 								<Badge className="badge" bg="success">
 									{subject.name}
 								</Badge>

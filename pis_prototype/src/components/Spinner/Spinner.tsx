@@ -4,7 +4,7 @@ import { Spinner as SpinnerBS } from "react-bootstrap";
 
 interface SpinnerProps {
 	isLoading: boolean;
-	children: any;
+	children?: any;
 }
 
 const Spinner: FC<SpinnerProps> = (props) => {
