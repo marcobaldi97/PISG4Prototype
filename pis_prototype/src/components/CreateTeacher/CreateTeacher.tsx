@@ -1,7 +1,12 @@
 import axios from "axios";
 import React from "react";
 import { Button, Form } from "react-bootstrap";
-import { QueryObserverResult, RefetchOptions, RefetchQueryFilters, useMutation } from "react-query";
+import {
+	QueryObserverResult,
+	RefetchOptions,
+	RefetchQueryFilters,
+	useMutation,
+} from "react-query";
 
 import { Subject, Teacher } from "../../types";
 import Spinner from "../Spinner/Spinner";
@@ -9,15 +14,17 @@ import Spinner from "../Spinner/Spinner";
 import "./CreateTeacher.scss";
 
 interface CreateTeacherProps {
-	refetchCallback: <TPageData>(options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined) => Promise<QueryObserverResult<Teacher[], unknown>>
+	refetchCallback: <TPageData>(
+		options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined
+	) => Promise<QueryObserverResult<Teacher[], unknown>>;
 }
 
 export default function CreateTeacher(props: CreateTeacherProps) {
-	const { refetchCallback } = props
+	const { refetchCallback } = props;
 
-	const {isLoading, mutate} = useMutation((newTeacher: Teacher) => {
-		return axios.post('http://localhost:3000/teachers', newTeacher)
-	})
+	const { isLoading, mutateAsync } = useMutation((newTeacher: Teacher) => {
+		return axios.post("http://localhost:3000/teachers", newTeacher);
+	});
 
 	const handleSubmit = (event: any) => {
 		const { target } = event;
@@ -33,13 +40,14 @@ export default function CreateTeacher(props: CreateTeacherProps) {
 				name: subject.trim(),
 			}));
 
-		mutate({ci,firstName,lastName,subjects})
-		refetchCallback()
+		mutateAsync({ ci, firstName, lastName, subjects }).finally(
+			refetchCallback
+		);
 
-		target.ci.value = '';
-		target.firstName.value = '';
-		target.lastName.value = '';
-		target.subjects.value = '';
+		target.ci.value = "";
+		target.firstName.value = "";
+		target.lastName.value = "";
+		target.subjects.value = "";
 	};
 
 	return (
@@ -74,9 +82,7 @@ export default function CreateTeacher(props: CreateTeacherProps) {
 				variant="success"
 				size="sm"
 				type="submit">
-					<Spinner isLoading={isLoading}>
-						Submit New Teacher
-					</Spinner>
+				<Spinner isLoading={isLoading}>Submit New Teacher</Spinner>
 			</Button>
 		</Form>
 	);
