@@ -34,7 +34,7 @@ export default function TeachersTable(props: TeachersTableProps) {
 						<td>
 							{teacher.subjects?.map((subject) => (
 								<Badge className="badge" bg="success">
-									{subject.name}
+									{subject}
 								</Badge>
 							))}
 						</td>

@@ -1,6 +1,4 @@
-export interface Subject {
-    name: string;
-}
+export type Subject = string;
 
 export interface Teacher {
     ci: string;

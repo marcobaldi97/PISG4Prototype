@@ -6,8 +6,15 @@ class TeachersController < ApplicationController
     end
     
     def create
-        @teachers = Teacher.create(ci: params[:ci],firstName: params[:firstName],lastName: params[:lastName], )
+        @teacher = Teacher.create(ci: params[:ci],firstName: params[:firstName],lastName: params[:lastName])
         
-        render json: @teachers
+        subjects = params[:subjects]
+
+        subjects.each do |subjectName|
+            puts subjectName
+            @teacher = @teacher.subjects.create(name: "IT")
+        end
+        
+        render json: @teacher
     end
 end

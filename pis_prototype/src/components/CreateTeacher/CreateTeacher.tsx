@@ -34,11 +34,9 @@ export default function CreateTeacher(props: CreateTeacherProps) {
 		const ci: string = target.ci.value;
 		const firstName: string = target.firstName.value;
 		const lastName: string = target.lastName.value;
-		const subjects: Subject[] = (target.subjects.value as string)
+		const subjects: string[] = (target.subjects.value as string)
 			.split(",")
-			.map((subject) => ({
-				name: subject.trim(),
-			}));
+			.map((subject) => subject.trim());
 
 		mutateAsync({ ci, firstName, lastName, subjects }).finally(
 			refetchCallback
