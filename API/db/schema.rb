@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_200625) do
     t.string "firstName"
     t.string "lastName"
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "updated_at", null: falses
   end
 
 end

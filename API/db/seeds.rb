@@ -13,6 +13,7 @@ teacher1 = Teacher.create(ci: "1.685.142-7", firstName: "Marhk", lastName: "Bald
 teacher2 = Teacher.create(ci: "1.695.142-7", firstName: "Nick", lastName: "Bluwuw")
 teacher3 = Teacher.create(ci: "5.013.775-8", firstName: "Nachou", lastName: "Carmoninsky")
 
-s1 = Subject.create(name: 'IT')
-s2 = Subject.create(name: 'Math')
-s3 = Subject.create(name: 'History')
+teacher1.subjects << Subject.where(name: "IT");
+teacher2.subjects << Subject.where(name: "IT");
+teacher3.subjects << Subject.where(name: "IT");
+teacher3.subjects << Subject.where(name: "Math");
