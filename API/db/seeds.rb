@@ -9,11 +9,11 @@
 Teacher.destroy_all
 Subject.destroy_all
 
-teacher1 = Teacher.create(ci: "1.685.142-7", firstName: "Marhk", lastName: "Baldi")
-teacher2 = Teacher.create(ci: "1.695.142-7", firstName: "Nick", lastName: "Bluwuw")
-teacher3 = Teacher.create(ci: "5.013.775-8", firstName: "Nachou", lastName: "Carmoninsky")
+teacher1 = Teacher.create(ci: "1.685.142-7", firstName: "Marco", lastName: "Baldi")
+teacher2 = Teacher.create(ci: "1.695.142-7", firstName: "Nick", lastName: "Blumetto")
+teacher3 = Teacher.create(ci: "5.013.775-8", firstName: "Nacho", lastName: "Carmona")
 
-teacher1.subjects << Subject.where(name: "IT");
+teacher1.subjects << Subject.create(name: "IT");
 teacher2.subjects << Subject.where(name: "IT");
 teacher3.subjects << Subject.where(name: "IT");
-teacher3.subjects << Subject.where(name: "Math");
+teacher3.subjects << Subject.create(name: "Math");
